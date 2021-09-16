@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="661" started-at="2021-09-16T14:08:42 EDT" finished-at="2021-09-16T14:08:43 EDT">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="661" started-at="2021-09-16T14:08:42 EDT" finished-at="2021-09-16T14:08:43 EDT">
+      <class name="unittest.PatientTest">
+        <test-method status="PASS" signature="PatientTestDelete()[pri:0, instance:unittest.PatientTest@6c49835d]" name="PatientTestDelete" duration-ms="562" started-at="2021-09-16T14:08:42 EDT" finished-at="2021-09-16T14:08:43 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PatientTestDelete -->
+        <test-method status="PASS" signature="PatientTestNew()[pri:0, instance:unittest.PatientTest@6c49835d]" name="PatientTestNew" duration-ms="13" started-at="2021-09-16T14:08:43 EDT" finished-at="2021-09-16T14:08:43 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PatientTestNew -->
+        <test-method status="PASS" signature="PatientTestRead()[pri:0, instance:unittest.PatientTest@6c49835d]" name="PatientTestRead" duration-ms="4" started-at="2021-09-16T14:08:43 EDT" finished-at="2021-09-16T14:08:43 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PatientTestRead -->
+        <test-method status="PASS" signature="PatientTestUpdate()[pri:0, instance:unittest.PatientTest@6c49835d]" name="PatientTestUpdate" duration-ms="16" started-at="2021-09-16T14:08:43 EDT" finished-at="2021-09-16T14:08:43 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PatientTestUpdate -->
+      </class> <!-- unittest.PatientTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

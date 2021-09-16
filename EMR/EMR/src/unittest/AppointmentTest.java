@@ -51,4 +51,44 @@ public class AppointmentTest {
 		Assert.assertTrue(ap.appointmentIsUpdatedDB());
 		ap.updateAppointment("Branch", originalBranchName);
 	}
+	
+	@Test
+	public void AppointmentTestRead() 
+	{
+		//1:retrieve random id
+		//2:check if id exists and is not null by creating appointment object
+		String[][] db = EMRDbConn.retreive("select * from appointment",5);
+		Random rand = new Random();
+		int randomID = rand.nextInt(db.length);
+		
+		Appointment ap = new Appointment(db[randomID][0]);
+		Assert.assertTrue(ap.getAppID() != null);
+	}
+	
+	@Test
+	public void AppointmentTestDelete() 
+	{
+		//1:retrieve random id and create appointment object
+		//2:store contents of object temporarily
+		//3:delete row with retrieved id
+		//4:create an object with previous random id, assert it does not exist
+		//5:create row again with stored data
+		String[][] db = EMRDbConn.retreive("select * from appointment",5);
+		Random rand = new Random();
+		int randomID = rand.nextInt(db.length);
+		
+		Appointment ap = new Appointment(db[randomID][0]);
+		String appID = ap.getAppID();
+		String appDate = ap.getAppDate();
+		String appTime = ap.getAppTime();
+		String patientID = ap.getPatientID();
+		String branch = ap.getBranch();
+		
+		ap.removeAppointment();
+		
+		Appointment ap2 = new Appointment(db[randomID][0]);
+		Assert.assertTrue(ap2.getAppID() == null);
+		
+		Appointment newAp = new Appointment(appID,patientID,appDate,appTime,branch);
+	}
 }
