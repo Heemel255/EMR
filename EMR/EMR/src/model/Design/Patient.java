@@ -12,13 +12,17 @@ public class Patient
 	//this is for already existing 
 	public Patient(String id)
 	{
-		String[][] db = EMRDbConn.retreive("select * from patient where PatientID = '"+ id +"'",4);
-		
-		this.setPatientID(db[0][0]);
-		this.setPatientName(db[0][1]);
-		this.setDofB(db[0][2]);
-		this.setHomeBranch(db[0][3]);
-		
+		try {
+			String[][] db = EMRDbConn.retreive("select * from patient where PatientID = '"+ id +"'",4);
+			
+			this.setPatientID(db[0][0]);
+			this.setPatientName(db[0][1]);
+			this.setDofB(db[0][2]);
+			this.setHomeBranch(db[0][3]);
+		}
+		catch(Exception e) {
+			
+		}
 	}
 	
 	//this is for new

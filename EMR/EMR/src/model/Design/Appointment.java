@@ -13,12 +13,17 @@ public class Appointment
 	//this is for already existing 
 	public Appointment(String id)
 	{
-		String[][] db = EMRDbConn.retreive("select * from appointment where AppID = '"+ id +"'",5);
-		this.setAppID(db[0][0]);
-		this.setPatientID(db[0][1]);
-		this.setAppDate(db[0][2]);
-		this.setAppTime(db[0][3]);
-		this.setBranch(db[0][4]);
+		try {
+			String[][] db = EMRDbConn.retreive("select * from appointment where AppID = '"+ id +"'",5);
+			this.setAppID(db[0][0]);
+			this.setPatientID(db[0][1]);
+			this.setAppDate(db[0][2]);
+			this.setAppTime(db[0][3]);
+			this.setBranch(db[0][4]);
+		}
+		catch(Exception e) {
+			
+		}
 	}
 	
 	//this is for new

@@ -12,10 +12,15 @@ public class Branch
 	
 		public Branch(String id)
 		{
-			String[][] db = EMRDbConn.retreive("select * from branch where BranchID = '"+ id +"'",2);
-			
-			this.setBranchID(db[0][0]);
-			this.setCity(db[0][1]);
+			try {
+				String[][] db = EMRDbConn.retreive("select * from branch where BranchID = '"+ id +"'",2);
+				
+				this.setBranchID(db[0][0]);
+				this.setCity(db[0][1]);
+			}
+			catch(Exception e) {
+				
+			}
 		}
 		
 		//this is for new
