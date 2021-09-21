@@ -14,8 +14,8 @@ public class AppointmentTest {
 	public void AppointmentTestNew() 
 	{
 		//1:make new appointment by using a random id
-		//2:assert it is in db by checking with the created id 
-		//3:remove it from db
+		//2:assert it is in DB by checking with the created id 
+		//3:remove it from DB
 		
 		String[][] db = EMRDbConn.retreive("select * from appointment",5);
 		Random rand = new Random();
@@ -34,7 +34,7 @@ public class AppointmentTest {
 	{
 		//1:retrieve random id
 		//2:make an appointment object from it
-		//3:update branch column in db
+		//3:update branch column in DB
 		//4:assert if it is updated
 		//5:update it again to the original value
 		
