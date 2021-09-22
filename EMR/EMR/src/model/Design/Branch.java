@@ -12,10 +12,10 @@ public class Branch
 		public Branch(String id)
 		{
 			try {
-				String[][] db = EMRDbConn.retreive("select * from branch where BranchID = '"+ id +"'",2);
+				//String[][] db = EMRDbConn.retreive("select * from branch where BranchID = '"+ id +"'",2);
 				
-				this.setBranchID(db[0][0]);
-				this.setCity(db[0][1]);
+				//this.setBranchID(db[0][0]);
+				//this.setCity(db[0][1]);
 			}
 			catch(Exception e) {
 				
@@ -26,7 +26,7 @@ public class Branch
 		public Branch(String id, String city)
 		{
 			String[] newinsertdata = {id,city};
-			EMRDbConn.modify("INSERT INTO branch (BranchID, City) VALUES (?, ?)", newinsertdata);
+			//EMRDbConn.modify("INSERT INTO branch (BranchID, City) VALUES (?, ?)", newinsertdata);
 			
 			this.setBranchID(id);
 			this.setCity(city);
@@ -40,22 +40,22 @@ public class Branch
 					+ "set "+set+" = '"+setvalue+"'"
 					+ "where BranchID = '" + this.getBranchID() + "'";
 					
-			EMRDbConn.modify(updateStatement, null);
+			//EMRDbConn.modify(updateStatement, null);
 		}
 		
 		public void removeBranch()
 		{
 			
 			String removeStatement = "DELETE * FROM branch WHERE BranchID = '" + this.getBranchID() + "'";
-			EMRDbConn.modify(removeStatement, null);
+			//EMRDbConn.modify(removeStatement, null);
 		}
 		
 		public boolean branchIsInDB(String idToTest) {
 			
-			String[][] db = EMRDbConn.retreive("select * from branch where BranchID = '"+ this.getBranchID() +"'",2);
+			//String[][] db = EMRDbConn.retreive("select * from branch where BranchID = '"+ this.getBranchID() +"'",2);
 			
-			if(idToTest.equals(db[0][0]))
-				return true;
+			//if(idToTest.equals(db[0][0]))
+				//return true;
 			
 			return false;
 		}
@@ -64,10 +64,10 @@ public class Branch
 			//used to check if updates worked on the db
 			//update object attributes via set methods after using updateAppointment
 			
-			String[][] db = EMRDbConn.retreive("select * from branch where BranchID = '"+ this.getBranchID() +"'",2);
+			//String[][] db = EMRDbConn.retreive("select * from branch where BranchID = '"+ this.getBranchID() +"'",2);
 			
-			if(db[0][1].equals(City))
-				return false;
+			//if(db[0][1].equals(City))
+				//return false;
 			
 			return true;
 		}
