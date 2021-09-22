@@ -1,8 +1,7 @@
 package model.Design;
 
-import model.Helper.EMRDbConn;
 import java.util.ArrayList;
-
+/*
 public class Branch 
 {
 	private String BranchID;
@@ -102,4 +101,4 @@ public class Branch
 		}
 		
 	
-}
+}*/

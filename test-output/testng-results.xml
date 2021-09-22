@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="727" started-at="2021-09-21T13:59:56 EDT" finished-at="2021-09-21T13:59:57 EDT">
+  <suite name="Default suite" duration-ms="1091" started-at="2021-09-22T13:45:52 EDT" finished-at="2021-09-22T13:45:53 EDT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="727" started-at="2021-09-21T13:59:56 EDT" finished-at="2021-09-21T13:59:57 EDT">
+    <test name="Default test" duration-ms="1091" started-at="2021-09-22T13:45:52 EDT" finished-at="2021-09-22T13:45:53 EDT">
       <class name="unittest.AppointmentTest">
-        <test-method status="PASS" signature="AppointmentTestDelete()[pri:0, instance:unittest.AppointmentTest@6c49835d]" name="AppointmentTestDelete" duration-ms="606" started-at="2021-09-21T13:59:56 EDT" finished-at="2021-09-21T13:59:57 EDT">
+        <test-method status="PASS" signature="AppointmentTestDelete()[pri:0, instance:unittest.AppointmentTest@a7e666]" name="AppointmentTestDelete" duration-ms="652" started-at="2021-09-22T13:45:52 EDT" finished-at="2021-09-22T13:45:53 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AppointmentTestDelete -->
-        <test-method status="PASS" signature="AppointmentTestNew()[pri:0, instance:unittest.AppointmentTest@6c49835d]" name="AppointmentTestNew" duration-ms="24" started-at="2021-09-21T13:59:57 EDT" finished-at="2021-09-21T13:59:57 EDT">
+        <test-method status="PASS" signature="AppointmentTestNew()[pri:0, instance:unittest.AppointmentTest@a7e666]" name="AppointmentTestNew" duration-ms="60" started-at="2021-09-22T13:45:53 EDT" finished-at="2021-09-22T13:45:53 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AppointmentTestNew -->
-        <test-method status="PASS" signature="AppointmentTestRead()[pri:0, instance:unittest.AppointmentTest@6c49835d]" name="AppointmentTestRead" duration-ms="10" started-at="2021-09-21T13:59:57 EDT" finished-at="2021-09-21T13:59:57 EDT">
+        <test-method status="PASS" signature="AppointmentTestRead()[pri:0, instance:unittest.AppointmentTest@a7e666]" name="AppointmentTestRead" duration-ms="116" started-at="2021-09-22T13:45:53 EDT" finished-at="2021-09-22T13:45:53 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AppointmentTestRead -->
-        <test-method status="PASS" signature="AppointmentTestUpdate()[pri:0, instance:unittest.AppointmentTest@6c49835d]" name="AppointmentTestUpdate" duration-ms="30" started-at="2021-09-21T13:59:57 EDT" finished-at="2021-09-21T13:59:57 EDT">
+        <test-method status="PASS" signature="AppointmentTestUpdate()[pri:0, instance:unittest.AppointmentTest@a7e666]" name="AppointmentTestUpdate" duration-ms="225" started-at="2021-09-22T13:45:53 EDT" finished-at="2021-09-22T13:45:53 EDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AppointmentTestUpdate -->
