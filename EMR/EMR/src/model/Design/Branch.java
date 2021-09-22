@@ -98,7 +98,5 @@ public class Branch
 		public void setCity(String city)
 		{
 			City = city;
-		}
-		
-	
+		}	
 }
