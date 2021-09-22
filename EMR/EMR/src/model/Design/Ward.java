@@ -2,8 +2,6 @@ package model.Design;
 
 import java.util.ArrayList;
 
-import model.Helper.EMRDbConn;
-
 public class Ward
 {
 	private String WardID;
@@ -17,7 +15,8 @@ public class Ward
 
 	public Ward(String id)
 	{
-		String[][] db = EMRDbConn.retreive("select * from ward where WardID = '"+ id +"'",5);
+		//String[][] db = EMRDbConn.retreive("select * from ward where WardID = '"+ id +"'",5);
+		String[][] db = null;
 		
 		this.setWardID(db[0][0]);
 		this.setBranch(db[0][1]);
@@ -30,7 +29,7 @@ public class Ward
 	public Ward(String id, String city)
 	{
 		String[] newinsertdata = {id,city};
-		EMRDbConn.modify("INSERT INTO ward (WardID, Branch, Capacity, CapAvailable, CapTaken) VALUES (?, ?, ?, ?, ?)", newinsertdata);
+		//EMRDbConn.modify("INSERT INTO ward (WardID, Branch, Capacity, CapAvailable, CapTaken) VALUES (?, ?, ?, ?, ?)", newinsertdata);
 		
 		
 	}
@@ -41,7 +40,7 @@ public class Ward
 				+ "set "+set+" = '"+setvalue+"'"
 				+ "where WardID = '" + this.getWardID() + "'";
 				
-		EMRDbConn.modify(updateStatement, null);
+		//EMRDbConn.modify(updateStatement, null);
 	}
 	
 	public void addpatient(String w) {

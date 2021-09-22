@@ -2,7 +2,6 @@ package model.Design;
 
 import java.util.ArrayList;
 
-import model.Helper.EMRDbConn;
 
 public class MedicalRecord
 {
@@ -15,7 +14,9 @@ public class MedicalRecord
 	
 	public MedicalRecord(String id)
 	{
-		String[][] db = EMRDbConn.retreive("select * from MedicalRecords where ID = '"+ id +"'",6);
+		//String[][] db = EMRDbConn.retreive("select * from MedicalRecords where ID = '"+ id +"'",6);
+		String[][] db = null;
+		
 		this.setID(db[0][0]);
 		this.setPatientid(db[0][1]);
 		this.setDoctorid(db[0][2]);
@@ -27,7 +28,7 @@ public class MedicalRecord
 	public MedicalRecord(String id, String patientid, String doctorid, String accessdate, String diagnosis, String prescription)
 	{
 		String[] newinsertdata = {id,patientid,doctorid,accessdate,diagnosis,prescription};
-		EMRDbConn.modify("INSERT INTO MedicalRecords (ID, PatientID, DoctorID, AssessDate, Diagnosis, Prescription) VALUES (?, ?, ?, ?, ?, ?)", newinsertdata);
+		//EMRDbConn.modify("INSERT INTO MedicalRecords (ID, PatientID, DoctorID, AssessDate, Diagnosis, Prescription) VALUES (?, ?, ?, ?, ?, ?)", newinsertdata);
 		
 		this.setID(id);
 		this.setPatientid(patientid);
@@ -39,8 +40,8 @@ public class MedicalRecord
 	
 	public static void allRecords(ArrayList<String> aa, String patientid)
 	{
-		String[][] db = EMRDbConn.retreive("select * from MedicalRecords where PatientID = '"+ patientid +"'",6);
-		
+		//String[][] db = EMRDbConn.retreive("select * from MedicalRecords where PatientID = '"+ patientid +"'",6);
+		String[][] db = null;
 		
 		for(int i=0;i<db.length;i++)
 		{
@@ -56,7 +57,7 @@ public class MedicalRecord
 				+ "set "+set+" = '"+setvalue+"'"
 				+ "where ID = '" + this.getID() + "'";
 				
-		EMRDbConn.modify(updateStatement, null);
+		//EMRDbConn.modify(updateStatement, null);
 	}
 
 	public String getID()

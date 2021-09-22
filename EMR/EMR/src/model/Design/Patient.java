@@ -1,6 +1,5 @@
 package model.Design;
 
-import model.Helper.EMRDbConn;
 
 public class Patient
 {
@@ -13,12 +12,12 @@ public class Patient
 	public Patient(String id)
 	{
 		try {
-			String[][] db = EMRDbConn.retreive("select * from patient where PatientID = '"+ id +"'",4);
+			/*String[][] db = EMRDbConn.retreive("select * from patient where PatientID = '"+ id +"'",4);
 			
 			this.setPatientID(db[0][0]);
 			this.setPatientName(db[0][1]);
 			this.setDofB(db[0][2]);
-			this.setHomeBranch(db[0][3]);
+			this.setHomeBranch(db[0][3]);*/
 		}
 		catch(Exception e) {
 			
@@ -29,7 +28,7 @@ public class Patient
 	public Patient(String id, String name, String DofB, String branch)
 	{
 		String[] newinsertdata = {id,name,DofB, branch};
-		EMRDbConn.modify("INSERT INTO patient (PatientID, PatientName, DoB, HomeBranch) VALUES (?, ?, ?, ?)", newinsertdata);
+		//EMRDbConn.modify("INSERT INTO patient (PatientID, PatientName, DoB, HomeBranch) VALUES (?, ?, ?, ?)", newinsertdata);
 		
 		this.setPatientID(id);
 		this.setPatientName(name);
@@ -45,26 +44,26 @@ public class Patient
 				+ "set "+set+" = '"+setvalue+"'"
 				+ "where PatientID = '" + this.getPatientID() + "'";
 				
-		EMRDbConn.modify(updateStatement, null);
+		//EMRDbConn.modify(updateStatement, null);
 	}
 	
 	public void removePatient()
 	{
 		
 		String removeStatement = "DELETE * FROM patient WHERE PatientID = '" + this.getPatientID() + "'";
-		EMRDbConn.modify(removeStatement, null);
+		//EMRDbConn.modify(removeStatement, null);
 	}
 	
 	public boolean patientIsInDB(String idToTest) {
 		
-		String[][] db = EMRDbConn.retreive("select * from patient where PatientID = '"+ this.getPatientID() +"'",4);
+		//String[][] db = EMRDbConn.retreive("select * from patient where PatientID = '"+ this.getPatientID() +"'",4);
 		
-		if(idToTest.equals(db[0][0]))
-			return true;
+		//if(idToTest.equals(db[0][0]))
+			//return true;
 		
 		return false;
 	}
-	
+	/*
 	public boolean patientIsUpdatedDB() {
 		//used to check if updates worked on the db
 		//update object attributes via set methods after using updateAppointment
@@ -77,7 +76,7 @@ public class Patient
 			return false;
 		
 		return true;
-	}
+	}*/
 	
 	
 	public String getPatientID()

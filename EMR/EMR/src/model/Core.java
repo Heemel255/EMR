@@ -1,8 +1,11 @@
 package model;
 
 import java.awt.EventQueue;
+import java.util.List;
 
 import emr_gui.LoginFrame;
+import model.Design.Appointment;
+import model.Helper.MySQLConn;
 
 
 

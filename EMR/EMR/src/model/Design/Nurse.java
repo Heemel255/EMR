@@ -2,8 +2,6 @@ package model.Design;
 
 import java.util.ArrayList;
 
-import model.Helper.EMRDbConn;
-
 public class Nurse extends Staff
 {
 	private String CurrentWard;
@@ -11,7 +9,8 @@ public class Nurse extends Staff
 		//this is for already existing 
 		public Nurse(String id)
 		{
-			String[][] db = EMRDbConn.retreive("select * from nurse where EmpID = '"+ id +"'",8);
+			//String[][] db = EMRDbConn.retreive("select * from nurse where EmpID = '"+ id +"'",8);
+			String[][] db = null;
 			
 			super.setFName(db[0][1]);
 			super.setLName(db[0][1]);
@@ -27,7 +26,7 @@ public class Nurse extends Staff
 		public Nurse(String id, String fname, String lname, String phone, String email, String ward, String branch, String logid)
 		{
 			String[] newinsertdata = {id,fname,lname,phone,email,ward,branch, logid};
-			EMRDbConn.modify("INSERT INTO nurse (EmpID, FName, LName, PhoneNum, Email, CurrentWard, HomeBranch, LoginID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", newinsertdata);
+			//EMRDbConn.modify("INSERT INTO nurse (EmpID, FName, LName, PhoneNum, Email, CurrentWard, HomeBranch, LoginID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", newinsertdata);
 			
 			super.setFName(fname);
 			super.setLName(lname);
@@ -47,13 +46,13 @@ public class Nurse extends Staff
 					+ "set "+set+" = '"+setvalue+"'"
 					+ "where EmpID = '" + super.getEmpID() + "'";
 					
-			EMRDbConn.modify(updateStatement, null);
+			//EMRDbConn.modify(updateStatement, null);
 		}
 	
 		public static void allUserID(ArrayList<String> aa)
 		{
-			String[][] db = EMRDbConn.retreive("select * from nurse",8);
-			
+			//String[][] db = EMRDbConn.retreive("select * from nurse",8);
+			String[][] db = null;
 			
 			for(int i=0;i<db.length;i++)
 			{

@@ -1,12 +1,12 @@
 package unittest;
 
+import java.util.List;
 import java.util.Random;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import model.Design.*;
-import model.Helper.EMRDbConn;
-
+import model.Helper.MySQLConn;
 
 public class AppointmentTest {
 	
@@ -17,9 +17,8 @@ public class AppointmentTest {
 		//2:assert it is in DB by checking with the created id 
 		//3:remove it from DB
 		
-		String[][] db = EMRDbConn.retreive("select * from appointment",5);
 		Random rand = new Random();
-		int randomID = db.length + rand.nextInt(10);
+		int randomID = rand.nextInt(1000);
 		
 		String id = "UnitTestID" + randomID;
 		
@@ -28,6 +27,7 @@ public class AppointmentTest {
 		Assert.assertTrue(ap.appointmentIsInDB(id));
 		ap.removeAppointment();
 	}
+	
 	
 	@Test
 	public void AppointmentTestUpdate() 
@@ -38,12 +38,13 @@ public class AppointmentTest {
 		//4:assert if it is updated
 		//5:update it again to the original value
 		
-		String[][] db = EMRDbConn.retreive("select * from appointment",5);
-		Random rand = new Random();
-		int randomID = rand.nextInt(db.length);
+		List<String> li = MySQLConn.Retrieve("select * from appointment", "AppID");
 		
-		Appointment ap = new Appointment(db[randomID][0]);
-		String originalBranchName = db[randomID][4];
+		Random rand = new Random();
+		int randomID = rand.nextInt(li.size());
+		
+		Appointment ap = new Appointment(li.get(randomID));
+		String originalBranchName = ap.getBranch();
 		String newBranchName = "UnitTestBranch1";
 		
 		ap.updateAppointment("Branch", newBranchName);
@@ -57,11 +58,11 @@ public class AppointmentTest {
 	{
 		//1:retrieve random id
 		//2:check if id exists and is not null by creating appointment object
-		String[][] db = EMRDbConn.retreive("select * from appointment",5);
+		List<String> li = MySQLConn.Retrieve("select * from appointment", "AppID");
 		Random rand = new Random();
-		int randomID = rand.nextInt(db.length);
+		int randomID = rand.nextInt(li.size());
 		
-		Appointment ap = new Appointment(db[randomID][0]);
+		Appointment ap = new Appointment(li.get(randomID));
 		Assert.assertTrue(ap.getAppID() != null);
 	}
 	
@@ -73,11 +74,12 @@ public class AppointmentTest {
 		//3:delete row with retrieved id
 		//4:create an object with previous random id, assert it does not exist
 		//5:create row again with stored data
-		String[][] db = EMRDbConn.retreive("select * from appointment",5);
-		Random rand = new Random();
-		int randomID = rand.nextInt(db.length);
+		List<String> li = MySQLConn.Retrieve("select * from appointment", "AppID");
 		
-		Appointment ap = new Appointment(db[randomID][0]);
+		Random rand = new Random();
+		int randomID = rand.nextInt(li.size());
+		
+		Appointment ap = new Appointment(li.get(randomID));
 		String appID = ap.getAppID();
 		String appDate = ap.getAppDate();
 		String appTime = ap.getAppTime();
@@ -86,7 +88,7 @@ public class AppointmentTest {
 		
 		ap.removeAppointment();
 		
-		Appointment ap2 = new Appointment(db[randomID][0]);
+		Appointment ap2 = new Appointment(li.get(randomID));
 		Assert.assertTrue(ap2.getAppID() == null);
 		
 		Appointment newAp = new Appointment(appID,patientID,appDate,appTime,branch);

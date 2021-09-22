@@ -1,6 +1,8 @@
 package model.Design;
 
-import model.Helper.EMRDbConn;
+import java.util.List;
+
+import model.Helper.MySQLConn;
 
 public class Appointment
 {
@@ -14,12 +16,13 @@ public class Appointment
 	public Appointment(String id)
 	{
 		try {
-			String[][] db = EMRDbConn.retreive("select * from appointment where AppID = '"+ id +"'",5);
-			this.setAppID(db[0][0]);
-			this.setPatientID(db[0][1]);
-			this.setAppDate(db[0][2]);
-			this.setAppTime(db[0][3]);
-			this.setBranch(db[0][4]);
+			String q = "select * from appointment where AppID='" + id + "'";
+			
+			this.setAppID(MySQLConn.Retrieve(q, "AppID").get(0));
+			this.setPatientID(MySQLConn.Retrieve(q, "PatientID").get(0));
+			this.setAppDate(MySQLConn.Retrieve(q, "AppDate").get(0));
+			this.setAppTime(MySQLConn.Retrieve(q, "AppTime").get(0));
+			this.setBranch(MySQLConn.Retrieve(q, "Branch").get(0));
 		}
 		catch(Exception e) {
 			
@@ -29,8 +32,7 @@ public class Appointment
 	//this is for new
 	public Appointment(String id, String patientid, String date, String time, String branch)
 	{
-		String[] newinsertdata = {id,patientid,date,time,branch};
-		EMRDbConn.modify("INSERT INTO appointment (AppID, PatientID, AppDate, AppTime, Branch) VALUES (?, ?, ?, ?, ?)", newinsertdata);
+		MySQLConn.Modify("INSERT INTO appointment " + "VALUES ('" +id+ "', '" +patientid+ "', '" +date+ "', '" +time+ "', '" +branch+ "')");
 		
 		this.setAppID(id);
 		this.setAppDate(date);
@@ -42,40 +44,46 @@ public class Appointment
 	public void updateAppointment(String set, String setvalue)
 	{
 		
-		String updateStatement = "update appointment "
-				+ "set "+set+" = '"+setvalue+"'"
-				+ "where AppID = '" + this.getAppID() + "'";
+		String updateStatement = "UPDATE appointment "
+				+ "SET "+set+" = '"+setvalue+"'"
+				+ "WHERE AppID = '" + this.getAppID() + "'";
 				
-		EMRDbConn.modify(updateStatement, null);
+		MySQLConn.Modify(updateStatement);
 	}
 	
 	public void removeAppointment()
 	{
 		
-		String removeStatement = "DELETE * FROM appointment WHERE AppID = '" + this.getAppID() + "'";
-		EMRDbConn.modify(removeStatement, null);
+		String removeStatement = "DELETE FROM appointment WHERE AppID = '" + this.getAppID() + "'";
+		MySQLConn.Modify(removeStatement);
 	}
 	
-	public boolean appointmentIsInDB(String idToTest) {
+	public boolean appointmentIsInDB(String idToTest) 
+	{
 		
-		String[][] db = EMRDbConn.retreive("select * from appointment where AppID = '"+ this.getAppID() +"'",5);
+		String q = "select * from appointment where AppID='" + idToTest + "'";
+		String id = MySQLConn.Retrieve(q, "AppID").get(0);
 		
-		if(idToTest.equals(db[0][0]))
+		if(idToTest.equals(id))
 			return true;
 		
 		return false;
 	}
 	
 	public boolean appointmentIsUpdatedDB() {
-		//used to check if updates worked on the db
-		//update object attributes via set methods after using updateAppointment
 		
-		String[][] db = EMRDbConn.retreive("select * from appointment where AppID = '"+ this.getAppID() +"'",5);
+		//String[][] db = EMRDbConn.retreive("select * from appointment where AppID = '"+ this.getAppID() +"'",5);
 		
-		if(db[0][1].equals(PatientID) && 
-				db[0][2].equals(AppDate) && 
-				db[0][3].equals(AppTime) && 
-				db[0][4].equals(Branch))
+		String q = "select * from appointment where AppID='" + this.getAppID() + "'";
+		String pid = MySQLConn.Retrieve(q, "PatientID").get(0);
+		String appd = MySQLConn.Retrieve(q, "AppDate").get(0);
+		String appt = MySQLConn.Retrieve(q, "AppTime").get(0);
+		String br = MySQLConn.Retrieve(q, "Branch").get(0);
+		
+		if(pid.equals(PatientID) && 
+				appd.equals(AppDate) && 
+				appt.equals(AppTime) && 
+				br.equals(Branch))
 			return false;
 		
 		return true;
