@@ -1,4 +1,4 @@
-package model;
+package core;
 
 import java.awt.EventQueue;
 import java.util.List;
