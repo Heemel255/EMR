@@ -1,4 +1,4 @@
-package model;
+package core;
 
 import java.awt.EventQueue;
 import java.util.List;
@@ -9,9 +9,8 @@ import model.Helper.MySQLConn;
 
 
 
-public class Core
+public class Application
 {
-
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
