@@ -1,4 +1,4 @@
-package unittest;
+package tests;
 
 import java.util.List;
 import java.util.Random;
@@ -20,7 +20,7 @@ public class AppointmentTest {
 		Random rand = new Random();
 		int randomID = rand.nextInt(1000);
 		
-		String id = "UnitTestID" + randomID;
+		String id = "TestID" + randomID;
 		
 		Appointment ap = new Appointment(id,"test","test","test","test");
 		
@@ -45,7 +45,7 @@ public class AppointmentTest {
 		
 		Appointment ap = new Appointment(li.get(randomID));
 		String originalBranchName = ap.getBranch();
-		String newBranchName = "UnitTestBranch1";
+		String newBranchName = "TestBranch1";
 		
 		ap.updateAppointment("Branch", newBranchName);
 		
